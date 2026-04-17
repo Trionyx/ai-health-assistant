@@ -8,7 +8,6 @@ This project explores a multi-agent architecture for a personal health assistant
 The current implementation is a controlled MVP focused on system behavior and reproducibility. It uses simulated scenarios and a configurable timeline instead of real integrations, executes agents sequentially for clarity and traceability, and isolates the evidence layer (PubMed via MCP) from the core reasoning loop. The goal at this stage is not completeness, but to validate architecture, agent interaction patterns, and the quality of synthesized outputs in a predictable and testable environment.
 
 ## Screenshots
-Replace the placeholder paths below after you add images to the repository (for example under `assets/screenshots/`).
 
 | Login | Admin dashboard |
 | --- | --- |
