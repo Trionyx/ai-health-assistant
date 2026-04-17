@@ -13,6 +13,7 @@ The current implementation is a controlled MVP focused on system behavior and re
 | --- | --- |
 | ![User report view](assets/screenshots/screenshot-01-user-view.png) | ![Tasks](assets/screenshots/screenshot-02-tasks.png) |
 | Export to reminders | Trace view |
+| --- | --- |
 | ![Export to reminders](assets/screenshots/screenshot-03-export-view.png) | ![Trace timeline view](assets/screenshots/screenshot-04-trace-view.png) |
 
 ## Requirements
