@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-family: "Segoe UI", sans-serif;
+    color: #d8e6f2;
+    background: #08131d;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: #08131d;
+  }
+
+  button {
+    @apply transition duration-200 ease-out;
+  }
+}

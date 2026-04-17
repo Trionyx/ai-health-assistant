@@ -1,0 +1,8 @@
+{
+  "name": "health-assistant",
+  "private": true,
+  "scripts": {
+    "frontend:dev": "corepack pnpm --dir frontend dev",
+    "frontend:build": "corepack pnpm --dir frontend build"
+  }
+}

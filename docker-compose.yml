@@ -1,0 +1,40 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    env_file:
+      - .env
+    environment:
+      OPENROUTER_BASE_URL: ${OPENROUTER_BASE_URL:-https://openrouter.ai/api/v1}
+      OPENROUTER_MODEL: ${OPENROUTER_MODEL:-openai/gpt-4.1-mini}
+      CORS_ALLOW_ORIGINS: ${CORS_ALLOW_ORIGINS:-*}
+      HA_DB_PATH: /app/data/ha.db
+      HA_ENABLE_EVIDENCE: ${HA_ENABLE_EVIDENCE:-false}
+      HA_WEEKLY_EVIDENCE_MAX_ITEMS: ${HA_WEEKLY_EVIDENCE_MAX_ITEMS:-2}
+      HA_MCP_TRANSPORT: ${HA_MCP_TRANSPORT:-http}
+      HA_PUBMED_MCP_URL: ${HA_PUBMED_MCP_URL:-http://pubmed_mcp:8081}
+      HA_MCP_TIMEOUT_SECONDS: ${HA_MCP_TIMEOUT_SECONDS:-10}
+      HA_PUBMED_MCP_COMMAND: ${HA_PUBMED_MCP_COMMAND:-pubmed-mcp-server}
+      HA_PUBMED_MCP_ARGS: ${HA_PUBMED_MCP_ARGS:-}
+    volumes:
+      - app_data:/app/data
+    restart: unless-stopped
+    depends_on:
+      - pubmed_mcp
+
+  web:
+    build:
+      context: ./frontend
+    depends_on:
+      - backend
+    ports:
+      - "${APP_PORT:-8080}:80"
+    restart: unless-stopped
+
+  pubmed_mcp:
+    image: node:22-alpine
+    command: sh -c "corepack enable && corepack pnpm dlx mcp-proxy --port 8081 -- corepack pnpm dlx --package @cyanheads/pubmed-mcp-server pubmed-mcp-server"
+    restart: unless-stopped
+
+volumes:
+  app_data:

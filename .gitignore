@@ -1,0 +1,15 @@
+__pycache__/
+.pytest_cache/
+.venv/
+node_modules/
+dist/
+build/
+.vite/
+*.pyc
+*.db
+.env
+docs/
+PLAN.md
+plan.md
+*.ps1
+
